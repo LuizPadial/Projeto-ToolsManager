@@ -1,19 +1,17 @@
 package br.com.project.toolsmanager.colaborador.dto;
 
+import br.com.project.toolsmanager.colaborador.model.UsuarioAdmin;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class UsuarioAdminRequest {
+public record UsuarioAdminRequest(
+        @NotBlank String email,
+        @NotBlank String senha ) {
 
-    @NotBlank
-    private String email;
-    @NotBlank
-    private String senha;
+    public UsuarioAdmin toEntity() {
+        return UsuarioAdmin
+                .builder()
+                .email(this.email)
+                .senha(this.senha)
+                .build();
+    }
 }

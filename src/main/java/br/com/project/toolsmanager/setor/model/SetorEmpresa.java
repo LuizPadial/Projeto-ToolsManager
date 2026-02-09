@@ -32,15 +32,4 @@ public class SetorEmpresa {
 
     @Column(name = "SETOR")
     private String setor;
-
-    public static SetorEmpresa of(SetorEmpresaRequest request) {
-        return SetorEmpresa
-                .builder()
-                .setor(request.getSetor())
-                .build();
-    }
-
-    public SetorEmpresa(Integer id) {
-        this.id = id;
-    }
 }

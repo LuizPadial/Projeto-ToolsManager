@@ -7,15 +7,15 @@ import br.com.project.toolsmanager.setor.model.SetorEmpresa;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Builder
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -32,7 +32,7 @@ public class Colaborador {
     private CargoColaborador cargo;
 
     @ManyToOne
-    @JoinColumn(name = "FK_SETOR", foreignKey = @ForeignKey (name = "FK_SETOR"), referencedColumnName = "ID")
+    @JoinColumn(name = "FK_SETOR", foreignKey = @ForeignKey (name = "FK_COLABORADOR_SETOR"), referencedColumnName = "ID")
     private SetorEmpresa setor;
 
     @Column(name = "NOME", length = 100, nullable = false)
@@ -59,19 +59,4 @@ public class Colaborador {
     @Enumerated(EnumType.STRING)
     @Column(name = "ROLE_USUARIO", nullable = false, length = 20)
     private ERoleUsuario roleUsuario;
-
-    public static Colaborador of(ColaboradorRequest request) {
-        return Colaborador
-                .builder()
-                .nome(request.getNome())
-                .matricula(request.getMatricula())
-                .cargo(new CargoColaborador(request.getCargoId()))
-                .setor(new SetorEmpresa(request.getSetorId()))
-                .codigoCracha(request.getCodigoCracha())
-                .biometria(request.getBiometria())
-                .dataCadastro(LocalDateTime.now())
-                .situacaoColaborador(ECodigoSituacaoColaborador.ATIVO)
-                .roleUsuario(request.getRoleUsuario())
-                .build();
-    }
 }

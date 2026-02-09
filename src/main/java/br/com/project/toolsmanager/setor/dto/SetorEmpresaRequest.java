@@ -1,18 +1,12 @@
 package br.com.project.toolsmanager.setor.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import br.com.project.toolsmanager.setor.model.SetorEmpresa;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class SetorEmpresaRequest {
+public record SetorEmpresaRequest(String setor) {
 
-    @NotBlank
-    private String setor;
-
+    public SetorEmpresa toEntity() {
+        return SetorEmpresa.builder()
+                .setor(this.setor)
+                .build();
+    }
 }

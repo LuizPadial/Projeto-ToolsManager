@@ -26,19 +26,8 @@ public class CargoColaborador {
 
     @OneToMany
     @JoinColumn(name = "FK_COLABORADOR", foreignKey = @ForeignKey(name = "FK_COLABORADOR"), referencedColumnName = "ID")
-    private Colaborador colaborador;
+    private List<Colaborador> colaboradores;;
 
     @Column(name = "CARGO")
     private String cargo;
-
-    public static CargoColaborador of(CargoColaboradorRequest request) {
-        return CargoColaborador
-                .builder()
-                .cargo(request.getCargo())
-                .build();
-    }
-
-    public CargoColaborador(Integer id) {
-        this.id = id;
-    }
 }

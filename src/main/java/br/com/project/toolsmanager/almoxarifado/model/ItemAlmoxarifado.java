@@ -25,7 +25,7 @@ public abstract class ItemAlmoxarifado {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "FK_SETOR", foreignKey = @ForeignKey (name = "FK_SETOR"), referencedColumnName = "ID")
+    @JoinColumn(name = "FK_SETOR", foreignKey = @ForeignKey (name = "FK_ITEM_ALMOX_SETOR"), referencedColumnName = "ID")
     private SetorEmpresa setor;
 
     @Size(min = 5, max = 100)

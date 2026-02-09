@@ -1,12 +1,13 @@
 package br.com.project.toolsmanager.colaborador.model;
 
-import br.com.project.toolsmanager.colaborador.enums.ERoleUsuario;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
 @Entity
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "usuarios_admin")
@@ -17,5 +18,4 @@ public class UsuarioAdmin extends Colaborador {
 
     @Column(name = "senha", nullable = false)
     private String senha;
-
 }
