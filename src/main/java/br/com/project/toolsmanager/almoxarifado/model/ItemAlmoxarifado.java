@@ -2,7 +2,7 @@ package br.com.project.toolsmanager.almoxarifado.model;
 
 import br.com.project.toolsmanager.almoxarifado.enums.ESituacao;
 import br.com.project.toolsmanager.almoxarifado.enums.ETipoItem;
-import br.com.project.toolsmanager.comum.enums.ECodigoSetor;
+import br.com.project.toolsmanager.setor.model.SetorEmpresa;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -24,6 +24,10 @@ public abstract class ItemAlmoxarifado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @ManyToOne
+    @JoinColumn(name = "FK_SETOR", foreignKey = @ForeignKey (name = "FK_SETOR"), referencedColumnName = "ID")
+    private SetorEmpresa setor;
+
     @Size(min = 5, max = 100)
     @Column(name = "NOME", length = 100, nullable = false)
     private String nome;
@@ -43,10 +47,5 @@ public abstract class ItemAlmoxarifado {
     @Enumerated(EnumType.STRING)
     @Column(name = "TIPO_ITEM", length = 50, nullable = false)
     private ETipoItem tipoItem;
-
-    @Size(max = 50)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "SETOR", length = 50, nullable = false)
-    private ECodigoSetor setor;
 
 }

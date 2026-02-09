@@ -18,7 +18,4 @@ public class UsuarioAdmin extends Colaborador {
     @Column(name = "senha", nullable = false)
     private String senha;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "role_usuario", nullable = false, length = 20)
-    private ERoleUsuario roleUsuario;
 }

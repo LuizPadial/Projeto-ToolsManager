@@ -7,7 +7,14 @@ import lombok.Getter;
 @Getter
 public enum ERoleUsuario {
 
-    ADMIN,
-    OPERADOR,
-    CONSULTA
+    ADMIN("Acesso total ao sistema"),
+    CONSULTA("Acesso de consulta e relatórios"),
+    USUARIO_SISTEMA("Acesso operacional ao sistema"),
+    SEM_ACESSO("Sem acesso ao sistema");
+
+    private final String descricao;
+
+    public boolean podeAcessarSistema() {
+        return this != SEM_ACESSO;
+    }
 }
