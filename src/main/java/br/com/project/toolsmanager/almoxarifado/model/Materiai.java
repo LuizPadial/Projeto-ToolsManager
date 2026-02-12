@@ -12,13 +12,10 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name ="MATERIAIS")
-public class Materiais extends ItemAlmoxarifado{
+public class Materiai extends ItemBase {
 
     @Column(name = "NUMERO_NOTA_FISCAL")
     private String numeroNotaFiscal;
-
-    @Column(name = "FORNECEDOR")
-    private String fornecedor;
 
     @Column(name = "SETOR_ARMAZENADO")
     private ESetorArmazem setorArmazenado;

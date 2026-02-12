@@ -1,12 +1,8 @@
 package br.com.project.toolsmanager.colaborador.dto;
 
-import br.com.project.toolsmanager.colaborador.model.CargoColaborador;
+import jakarta.validation.constraints.NotBlank;
 
-public record CargoColaboradorRequest(String cargo) {
+public record CargoColaboradorRequest(
+       @NotBlank String cargo) {
 
-    public CargoColaborador toEntity() {
-        return CargoColaborador.builder()
-                .cargo(this.cargo)
-                .build();
-    }
 }

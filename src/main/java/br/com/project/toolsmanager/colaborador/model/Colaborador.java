@@ -3,7 +3,7 @@ package br.com.project.toolsmanager.colaborador.model;
 import br.com.project.toolsmanager.colaborador.dto.ColaboradorRequest;
 import br.com.project.toolsmanager.colaborador.enums.ERoleUsuario;
 import br.com.project.toolsmanager.colaborador.enums.ECodigoSituacaoColaborador;
-import br.com.project.toolsmanager.setor.model.SetorEmpresa;
+import br.com.project.toolsmanager.setorempresa.model.SetorEmpresa;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -51,7 +51,6 @@ public class Colaborador {
     @Column(name = "DATA_CADASTRO", updatable = false)
     private LocalDateTime dataCadastro;
 
-    @Size(max = 25)
     @Enumerated(EnumType.STRING)
     @Column(name = "SITUACAO_COLABORADOR", length = 25, nullable = false)
     private ECodigoSituacaoColaborador situacaoColaborador;
@@ -59,4 +58,19 @@ public class Colaborador {
     @Enumerated(EnumType.STRING)
     @Column(name = "ROLE_USUARIO", nullable = false, length = 20)
     private ERoleUsuario roleUsuario;
+
+    public static Colaborador of(ColaboradorRequest request) {
+        return Colaborador
+                .builder()
+                .cargo(CargoColaborador.builder().id(request.cargoId()).build())
+                .setor(SetorEmpresa.builder().id(request.setorId()).build())
+                .nome(request.nome())
+                .matricula(request.matricula())
+                .codigoCracha(request.codigoCracha())
+                .biometria(request.biometria())
+                .dataCadastro(LocalDateTime.now())
+                .situacaoColaborador(ECodigoSituacaoColaborador.ATIVO)
+                .roleUsuario(ERoleUsuario.SEM_ACESSO)
+                .build();
+    }
 }

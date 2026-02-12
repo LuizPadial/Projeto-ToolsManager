@@ -2,22 +2,23 @@ package br.com.project.toolsmanager.almoxarifado.model;
 
 import br.com.project.toolsmanager.almoxarifado.enums.ESituacao;
 import br.com.project.toolsmanager.almoxarifado.enums.ETipoItem;
-import br.com.project.toolsmanager.setor.model.SetorEmpresa;
+import br.com.project.toolsmanager.setorempresa.model.SetorEmpresa;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
 
-@Data
+@Getter
+@Setter
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@SuperBuilder
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "ITENS_ALMOXARIFADO")
-public abstract class ItemAlmoxarifado {
+public abstract class ItemBase {
 
     @Id
     @Column(name = "ID")
@@ -31,6 +32,9 @@ public abstract class ItemAlmoxarifado {
     @Size(min = 5, max = 100)
     @Column(name = "NOME", length = 100, nullable = false)
     private String nome;
+
+    @Column(name = "FORNECEDOR")
+    private String fornecedor;
 
     @Column(name = "QUANTIDADE")
     private Integer quantidade;
@@ -47,5 +51,6 @@ public abstract class ItemAlmoxarifado {
     @Enumerated(EnumType.STRING)
     @Column(name = "TIPO_ITEM", length = 50, nullable = false)
     private ETipoItem tipoItem;
+
 
 }

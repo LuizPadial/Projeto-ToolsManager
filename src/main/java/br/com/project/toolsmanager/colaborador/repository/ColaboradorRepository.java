@@ -1,4 +1,8 @@
 package br.com.project.toolsmanager.colaborador.repository;
 
-public interface ColaboradorRepository {
+
+import br.com.project.toolsmanager.colaborador.model.Colaborador;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ColaboradorRepository extends JpaRepository<Colaborador, Integer> {
 }

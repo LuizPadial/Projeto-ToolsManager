@@ -1,8 +1,8 @@
-package br.com.project.toolsmanager.setor.model;
+package br.com.project.toolsmanager.setorempresa.model;
 
-import br.com.project.toolsmanager.almoxarifado.model.ItemAlmoxarifado;
+import br.com.project.toolsmanager.almoxarifado.model.ItemBase;
 import br.com.project.toolsmanager.colaborador.model.Colaborador;
-import br.com.project.toolsmanager.setor.dto.SetorEmpresaRequest;
+import br.com.project.toolsmanager.setorempresa.dto.SetorEmpresaRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,8 +28,15 @@ public class SetorEmpresa {
     private List<Colaborador> colaboradores;
 
     @OneToMany(mappedBy = "setor", fetch = FetchType.LAZY)
-    private List<ItemAlmoxarifado> itemAlmoxarifado;
+    private List<ItemBase> itemAlmoxarifado;
 
     @Column(name = "SETOR")
     private String setor;
+
+    public static SetorEmpresa of(SetorEmpresaRequest request) {
+        return SetorEmpresa
+                .builder()
+                .setor(request.setor())
+                .build();
+    }
 }

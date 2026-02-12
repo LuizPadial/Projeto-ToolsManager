@@ -11,7 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name ="FERRAMENTAS")
-public class Ferramentas extends ItemAlmoxarifado {
+public class Ferramenta extends ItemBase {
 
     @Column(name = "TREINAMENTO")
     private Boolean treinamento;

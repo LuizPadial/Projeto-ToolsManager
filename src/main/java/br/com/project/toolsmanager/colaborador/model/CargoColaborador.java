@@ -1,8 +1,6 @@
 package br.com.project.toolsmanager.colaborador.model;
 
 import br.com.project.toolsmanager.colaborador.dto.CargoColaboradorRequest;
-import br.com.project.toolsmanager.setor.dto.SetorEmpresaRequest;
-import br.com.project.toolsmanager.setor.model.SetorEmpresa;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,10 +22,16 @@ public class CargoColaborador {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToMany
-    @JoinColumn(name = "FK_COLABORADOR", foreignKey = @ForeignKey(name = "FK_COLABORADOR"), referencedColumnName = "ID")
+    @OneToMany(mappedBy = "cargo", fetch = FetchType.LAZY)
     private List<Colaborador> colaboradores;;
 
     @Column(name = "CARGO")
     private String cargo;
+
+    public static CargoColaborador of(CargoColaboradorRequest request) {
+        return CargoColaborador
+                .builder()
+                .cargo(request.cargo())
+                .build();
+    }
 }
