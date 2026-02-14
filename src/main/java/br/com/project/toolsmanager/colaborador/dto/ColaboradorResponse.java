@@ -10,7 +10,7 @@ public record ColaboradorResponse(
         Integer id,
         String nome,
         String matricula,
-        Integer cargoId,
+        Integer profissaoId,
         Integer setorId,
         @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
         LocalDateTime dataCadastro,
@@ -21,7 +21,7 @@ public record ColaboradorResponse(
                 colaborador.getId(),
                 colaborador.getNome(),
                 colaborador.getMatricula(),
-                colaborador.getCargo().getId(),
+                colaborador.getProfissao().getId(),
                 colaborador.getSetor().getId(),
                 colaborador.getDataCadastro(),
                 colaborador.getSituacaoColaborador()

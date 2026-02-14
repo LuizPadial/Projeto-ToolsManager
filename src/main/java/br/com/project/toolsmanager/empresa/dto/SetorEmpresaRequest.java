@@ -1,4 +1,4 @@
-package br.com.project.toolsmanager.setorempresa.dto;
+package br.com.project.toolsmanager.empresa.dto;
 
 import jakarta.validation.constraints.NotBlank;
 

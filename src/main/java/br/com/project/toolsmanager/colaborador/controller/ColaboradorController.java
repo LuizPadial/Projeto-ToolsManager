@@ -19,5 +19,4 @@ public class ColaboradorController {
     public void save(@Valid @RequestBody ColaboradorRequest request) {
         colaboradorService.salvar(request);
     }
-
 }

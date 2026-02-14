@@ -1,7 +1,7 @@
 package br.com.project.toolsmanager.almoxarifado.model;
 
 import br.com.project.toolsmanager.almoxarifado.dto.EpiRequest;
-import br.com.project.toolsmanager.setorempresa.model.SetorEmpresa;
+import br.com.project.toolsmanager.empresa.model.SetorEmpresa;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

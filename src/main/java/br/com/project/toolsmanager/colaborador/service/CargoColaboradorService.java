@@ -1,7 +1,7 @@
 package br.com.project.toolsmanager.colaborador.service;
 
 import br.com.project.toolsmanager.colaborador.dto.CargoColaboradorRequest;
-import br.com.project.toolsmanager.colaborador.model.CargoColaborador;
+import br.com.project.toolsmanager.colaborador.model.Profissao;
 import br.com.project.toolsmanager.colaborador.repository.CargoColaboradorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ public class CargoColaboradorService {
 
 
     public void salvar(CargoColaboradorRequest request) {
-        var cargo = CargoColaborador.of(request);
+        var cargo = Profissao.of(request);
 
         cargoColaboradorRepository.save(cargo);
     }

@@ -1,6 +1,6 @@
-package br.com.project.toolsmanager.setorempresa.controller;
+package br.com.project.toolsmanager.empresa.controller;
 
-import br.com.project.toolsmanager.setorempresa.dto.SetorEmpresaRequest;
+import br.com.project.toolsmanager.empresa.dto.SetorEmpresaRequest;
 import br.com.project.toolsmanager.setorempresa.service.SetorEmpresaService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

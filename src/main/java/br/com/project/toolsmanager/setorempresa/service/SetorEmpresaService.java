@@ -1,8 +1,8 @@
 package br.com.project.toolsmanager.setorempresa.service;
 
-import br.com.project.toolsmanager.setorempresa.dto.SetorEmpresaRequest;
-import br.com.project.toolsmanager.setorempresa.model.SetorEmpresa;
-import br.com.project.toolsmanager.setorempresa.repository.SetorEmpresaRepository;
+import br.com.project.toolsmanager.empresa.dto.SetorEmpresaRequest;
+import br.com.project.toolsmanager.empresa.model.SetorEmpresa;
+import br.com.project.toolsmanager.empresa.repository.SetorEmpresaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

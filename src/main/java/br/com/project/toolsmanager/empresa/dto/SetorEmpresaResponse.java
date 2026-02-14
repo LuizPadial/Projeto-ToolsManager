@@ -1,6 +1,6 @@
-package br.com.project.toolsmanager.setorempresa.dto;
+package br.com.project.toolsmanager.empresa.dto;
 
-import br.com.project.toolsmanager.setorempresa.model.SetorEmpresa;
+import br.com.project.toolsmanager.empresa.model.SetorEmpresa;
 
 public  record SetorEmpresaResponse(Integer id, String setor) {
 

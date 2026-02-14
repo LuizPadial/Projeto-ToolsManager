@@ -2,7 +2,7 @@ package br.com.project.toolsmanager.almoxarifado.model;
 
 import br.com.project.toolsmanager.almoxarifado.enums.ESituacao;
 import br.com.project.toolsmanager.almoxarifado.enums.ETipoItem;
-import br.com.project.toolsmanager.setorempresa.model.SetorEmpresa;
+import br.com.project.toolsmanager.empresa.model.SetorEmpresa;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -51,6 +51,5 @@ public abstract class ItemBase {
     @Enumerated(EnumType.STRING)
     @Column(name = "TIPO_ITEM", length = 50, nullable = false)
     private ETipoItem tipoItem;
-
 
 }

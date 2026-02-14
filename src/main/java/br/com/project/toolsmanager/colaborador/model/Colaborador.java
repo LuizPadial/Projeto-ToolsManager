@@ -1,24 +1,21 @@
 package br.com.project.toolsmanager.colaborador.model;
 
 import br.com.project.toolsmanager.colaborador.dto.ColaboradorRequest;
-import br.com.project.toolsmanager.colaborador.enums.ERoleUsuario;
 import br.com.project.toolsmanager.colaborador.enums.ECodigoSituacaoColaborador;
-import br.com.project.toolsmanager.setorempresa.model.SetorEmpresa;
+import br.com.project.toolsmanager.empresa.model.SetorEmpresa;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
 @Entity
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "COLABORADOR")
 public class Colaborador {
 
@@ -28,8 +25,8 @@ public class Colaborador {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "FK_CARGO", foreignKey = @ForeignKey (name = "FK_CARGO"), referencedColumnName = "ID")
-    private CargoColaborador cargo;
+    @JoinColumn(name = "FK_PROFISSAO", foreignKey = @ForeignKey (name = "FK_PROFISSAO"), referencedColumnName = "ID")
+    private Profissao profissao;
 
     @ManyToOne
     @JoinColumn(name = "FK_SETOR", foreignKey = @ForeignKey (name = "FK_COLABORADOR_SETOR"), referencedColumnName = "ID")
@@ -48,21 +45,17 @@ public class Colaborador {
     @Column(name = "BIOMETRIA", nullable = false)
     private String biometria;
 
-    @Column(name = "DATA_CADASTRO", updatable = false)
-    private LocalDateTime dataCadastro;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "SITUACAO_COLABORADOR", length = 25, nullable = false)
     private ECodigoSituacaoColaborador situacaoColaborador;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "ROLE_USUARIO", nullable = false, length = 20)
-    private ERoleUsuario roleUsuario;
+    @Column(name = "DATA_CADASTRO", updatable = false)
+    private LocalDateTime dataCadastro;
 
     public static Colaborador of(ColaboradorRequest request) {
         return Colaborador
                 .builder()
-                .cargo(CargoColaborador.builder().id(request.cargoId()).build())
+                .profissao(Profissao.builder().id(request.cargoId()).build())
                 .setor(SetorEmpresa.builder().id(request.setorId()).build())
                 .nome(request.nome())
                 .matricula(request.matricula())
@@ -70,7 +63,6 @@ public class Colaborador {
                 .biometria(request.biometria())
                 .dataCadastro(LocalDateTime.now())
                 .situacaoColaborador(ECodigoSituacaoColaborador.ATIVO)
-                .roleUsuario(ERoleUsuario.SEM_ACESSO)
                 .build();
     }
 }
