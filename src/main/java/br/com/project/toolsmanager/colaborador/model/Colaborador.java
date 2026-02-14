@@ -55,7 +55,7 @@ public class Colaborador {
     public static Colaborador of(ColaboradorRequest request) {
         return Colaborador
                 .builder()
-                .profissao(Profissao.builder().id(request.cargoId()).build())
+                .profissao(Profissao.builder().id(request.profissaoId()).build())
                 .setor(SetorEmpresa.builder().id(request.setorId()).build())
                 .nome(request.nome())
                 .matricula(request.matricula())

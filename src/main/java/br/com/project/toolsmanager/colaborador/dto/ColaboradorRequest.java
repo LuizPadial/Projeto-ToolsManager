@@ -10,9 +10,8 @@ public record ColaboradorRequest(
         @NotBlank String matricula,
         @NotBlank String codigoCracha,
         @NotBlank String biometria,
-        @NotNull Integer cargoId,
+        @NotNull Integer profissaoId,
         @NotNull Integer setorId,
-        @NotNull Integer empresaId,
-        ECodigoSituacaoColaborador situacaoColaborador,
-        EPermissoes roleUsuario) {
+        ECodigoSituacaoColaborador situacaoColaborador) {
+
 }

@@ -1,6 +1,6 @@
 package br.com.project.toolsmanager.colaborador.model;
 
-import br.com.project.toolsmanager.colaborador.dto.CargoColaboradorRequest;
+import br.com.project.toolsmanager.colaborador.dto.ProfissaoRequest;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,7 +10,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "FUNCAO_COLABORADOR")
+@Table(name = "PROFISSAO")
 public class Profissao {
 
     @Id
@@ -18,13 +18,13 @@ public class Profissao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "CARGO")
-    private String cargo;
+    @Column(name = "PROFISSAO")
+    private String profissao;
 
-    public static Profissao of(CargoColaboradorRequest request) {
+    public static Profissao of(ProfissaoRequest request) {
         return Profissao
                 .builder()
-                .cargo(request.cargo())
+                .profissao(request.profissao())
                 .build();
     }
 }

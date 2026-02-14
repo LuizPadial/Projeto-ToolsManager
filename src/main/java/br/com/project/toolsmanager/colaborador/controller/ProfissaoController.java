@@ -1,7 +1,7 @@
 package br.com.project.toolsmanager.colaborador.controller;
 
-import br.com.project.toolsmanager.colaborador.dto.CargoColaboradorRequest;
-import br.com.project.toolsmanager.colaborador.service.CargoColaboradorService;
+import br.com.project.toolsmanager.colaborador.dto.ProfissaoRequest;
+import br.com.project.toolsmanager.colaborador.service.ProfissaoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/cargocolaborador")
-public class CargoColaboradorController {
+public class ProfissaoController {
 
-    private final CargoColaboradorService cargoColaboradorService;
+    private final ProfissaoService cargoColaboradorService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(@Valid @RequestBody CargoColaboradorRequest request) {
+    public void save(@Valid @RequestBody ProfissaoRequest request) {
         cargoColaboradorService.salvar(request);
     }
 

@@ -1,19 +1,19 @@
 package br.com.project.toolsmanager.colaborador.service;
 
-import br.com.project.toolsmanager.colaborador.dto.CargoColaboradorRequest;
+import br.com.project.toolsmanager.colaborador.dto.ProfissaoRequest;
 import br.com.project.toolsmanager.colaborador.model.Profissao;
-import br.com.project.toolsmanager.colaborador.repository.CargoColaboradorRepository;
+import br.com.project.toolsmanager.colaborador.repository.ProfissaoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class CargoColaboradorService {
+public class ProfissaoService {
 
-    private final CargoColaboradorRepository cargoColaboradorRepository;
+    private final ProfissaoRepository cargoColaboradorRepository;
 
 
-    public void salvar(CargoColaboradorRequest request) {
+    public void salvar(ProfissaoRequest request) {
         var cargo = Profissao.of(request);
 
         cargoColaboradorRepository.save(cargo);
